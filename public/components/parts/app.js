@@ -1,9 +1,8 @@
 import React from 'react'
 
-import Router from 'react-router'
+import { Router, Route, Link } from 'react-router'
 
 //setup a route (to use later)
-let { Route, DefaultRoute, NotFoundRoute } = Router
 
 var App = React.createClass({
 
