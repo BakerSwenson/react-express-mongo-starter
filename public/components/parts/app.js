@@ -1,25 +1,41 @@
 import React from 'react'
 
-import { Router, Route, Link } from 'react-router'
+import { render } from 'react-dom'
 
-//setup a route (to use later)
+import { Router, Route, Link, IndexRoute } from 'react-router'
 
-var App = React.createClass({
+import Counter from '../../components/Counter'
 
-    getInitialState: function () { 
-        return { number: 0 } 
-        
-    },
-    render() {
-        return(
-            <div>
-              <h1>clicked {this.state.number} times!</h1>
-              <button onClick={this.handleClick}>click me!</button>
-            </div>
-        )
-    },
-    handleClick: function () {
-        this.setState({ number: this.state.number + 1 })
-    }
-})
-React.render(<App />, document.querySelector('#content'))
+import Index from '../../components/Index'
+
+import About from '../../components/About'
+
+import Contact from '../../components/Contact'
+
+import Error from '../../components/Error'
+
+const App = React.createClass({
+  render() {
+    return (
+        <div>
+            <Link to={'/'}>Home</Link> | 
+            <Link to={'about'}>About</Link> | 
+            <Link to={'contact'}>Contact</Link> | 
+            <Link to={'counter'}>Counter</Link>
+             { this.props.children }
+        </div>
+    )
+  }
+}) 
+
+React.render((
+    <Router>
+      <Route path="/" component={ App }>
+        <IndexRoute component={ Index }/>
+        <Route path="about" component={ About }/>
+        <Route path="contact" component={ Contact }/>
+        <Route path="counter" component={ Counter }/>
+        <Route path="*" component={ Error }/>
+      </Route>
+    </Router>
+), document.querySelector('#main'))
