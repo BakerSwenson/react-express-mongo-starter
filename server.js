@@ -38,8 +38,8 @@ app.use('/api', apiRouter);
 
 //tell the application the /public directory is the root directory
 //if page does not exist, go to 404.html
-app.use(ecstatic({ root: __dirname + '/public', handleError:true }));
-app.get('/', function(request, response){
+app.use(ecstatic({ root: __dirname + '/public', handleError:false }));
+app.get('*', function(request, response){
 	response.sendfile("./public/index.html");
 });
 

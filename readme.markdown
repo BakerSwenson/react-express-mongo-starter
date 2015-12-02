@@ -1,4 +1,4 @@
-# react-starter-with-express-api-mongoDB-es2015
+# react-express-mongo-starter
 
 added a few mods to the insanely awesome [react-starter](https://github.com/substack/react-starter) repo.  
 
@@ -48,34 +48,27 @@ navigate to the following directory `./app/config` and add your env.json
 * `npm run watch` - automatically recompile during development
 * `npm start` - start nodemon and monitor server.js
 
-# starter code (es2015)
+# folder/file structure (es2015)
 
 ``` 
-import React from 'react'
-
-import Router from 'react-router'
-
-let { Route, DefaultRoute, NotFoundRoute } = Router
-
-var App = React.createClass({
-
-    getInitialState: function () { 
-        return { number: 0 } 
-        
-    },
-    render() {
-        return(
-            <div>
-              <h1>clicked {this.state.number} times!</h1>
-              <button onClick={this.handleClick}>click me!</button>
-            </div>
-        )
-    },
-    handleClick: function () {
-        this.setState({ number: this.state.number + 1 })
-    }
-})
-React.render(<App />, document.querySelector('#content'))
+app
+  config
+    config.js
+    env.json
+    routes.js
+  controllers
+    visitorsControllers.js
+  models
+    Visitor.js
+public
+  components
+    parts
+      app.js
+  Counter.js
+  bundle.js
+  index.html
+server.js
+    
 ```
 # express api
 added api routing functionality to handle POST and GET requests. UPDATE and DELETE will be coming soon.
@@ -85,6 +78,9 @@ using socket.io to emits events to/from server to client.
 
 # es2015
 newest version of the ecmascript standard.
+
+# react-router
+routing functionality all set to go
 
 
 # contributing
