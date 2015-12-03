@@ -4,6 +4,8 @@
 
 This repo is currently undergoing surgery so some of the server side functionality will be broken.
 
+# the repo:
+
 added a few mods to the insanely awesome [react-starter](https://github.com/substack/react-starter) repo.  
 
 bare-bones [react](https://facebook.github.io/react/) starter
