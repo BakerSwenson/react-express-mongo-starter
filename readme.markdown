@@ -1,11 +1,5 @@
 # react-express-mongo-starter
 
-# notes: 
-
-This repo is currently undergoing surgery so some of the server side functionality will be broken.
-
-# the repo:
-
 added a few mods to the insanely awesome [react-starter](https://github.com/substack/react-starter) repo.  
 
 bare-bones [react](https://facebook.github.io/react/) starter
@@ -34,20 +28,6 @@ $ npm run watch &
 $ npm start
 ```
 
-# env.json
-navigate to the following directory `./app/config` and add your env.json
-
-```
-{
-  "development": {
-    "db" : "mongodb://localhost:27017/[DB-NAME-HERE]"
-  },
-  "production": {
-    "db" : ""
-  }
-}
-```
-
 # commands
 
 * `npm run build` - build for production
@@ -60,7 +40,6 @@ navigate to the following directory `./app/config` and add your env.json
 app
   config
     config.js
-    env.json
     routes.js
   controllers
     visitorsControllers.js
