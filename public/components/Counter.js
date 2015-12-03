@@ -2,12 +2,27 @@ import React from 'react'
 
 import Router from 'react-router'
 
-const Counter = React.createClass({
+class Counter extends React.Component{
 	
-	getInitialState: function () { 
-        return { number: 0 } 
-        
-    },
+	constructor(){
+        super();
+        this.handleClick = this.handleClick.bind(this);
+        this.state = {
+            number:0
+        }
+    }
+
+    componentWillMount(){
+        //do stuff before the component mounts
+    }
+
+    componentDidMount(){
+        //do stuff after the component mounts
+    }
+
+    handleClick() {
+        this.setState({ number: this.state.number + 1 })
+    }
 
     render() {
         return(
@@ -16,11 +31,7 @@ const Counter = React.createClass({
               <button onClick={this.handleClick}>click me!</button>
             </div>
         )
-    },
-
-    handleClick: function () {
-        this.setState({ number: this.state.number + 1 })
     }
-});
+};
 
 module.exports = Counter;

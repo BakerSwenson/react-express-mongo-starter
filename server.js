@@ -31,6 +31,14 @@ var port = process.env.PORT || 8000;
 // set our router
 var apiRouter = require( "./app/config/routes" );
 
+//CORS MIDDLEWARE
+apiRouter.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', apiRouter);

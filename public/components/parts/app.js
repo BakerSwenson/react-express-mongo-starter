@@ -14,7 +14,20 @@ import Contact from '../../components/Contact'
 
 import Error from '../../components/Error'
 
-const App = React.createClass({
+class App extends React.Component{
+  
+  constructor(){
+    super();
+  }
+  
+  componentWillMount(){
+    //do stuff before the component mounts
+  }
+
+  componentDidMount(){
+    //do stuff after the component mounts
+  }
+
   render() {
     return (
         <div>
@@ -26,7 +39,7 @@ const App = React.createClass({
         </div>
     )
   }
-}) 
+}
 
 React.render((
     <Router>
