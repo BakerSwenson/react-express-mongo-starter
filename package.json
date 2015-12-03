@@ -6,7 +6,7 @@
     ]
   },
   "scripts": {
-    "build": "NODE_ENV=production browserify public/components/**/* | uglifyjs -cm > public/bundle.js",
+    "build": "NODE_ENV=production watchify public/components/**/* -o public/bundle.js -dv",
     "start": "nodemon server.js",
     "watch": "watchify public/components/**/* -o public/bundle.js -dv",
     "postinstall" : "npm run build"

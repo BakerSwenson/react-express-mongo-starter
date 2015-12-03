@@ -1,6 +1,6 @@
 # react-express-mongo-starter
 
-# Notes: 
+# notes: 
 
 This repo is currently undergoing surgery so some of the server side functionality will be broken.
 
