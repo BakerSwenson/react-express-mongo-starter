@@ -68,6 +68,33 @@ newest version of the ecmascript standard.
 routing functionality all set to go
 
 
+# deploy to heroku
+make sure you have the [heroku toolbelt](https://toolbelt.heroku.com/) 
+
+```
+heroku create <app name>
+git push heroku master
+heroku config | grep MONOGOLAB_URI
+heroku config:set MONOGOLAB_URI=mongodb://<username>:<password>.mongolab.com:57244/<db_name>
+heroku config:set NODE_ENV=production
+heroku ps:scale web=1
+heroku open
+heroku logs
+```
+
+what's happening up there ^? 
+
+* `heroku create <app name>` - will create your application in heroku
+* `git push heroku master` - push your application to heroku
+* `heroku config | grep MONOGOLAB_URI` - search your config file for MONGOLAB_URI
+* `heroku config:set MONOGOLAB_URI=mongodb://<username>:<password>.mongolab.com:57244/<db_name>` - set your MONGOLAB_URI to your production database (assuming you're using mongolab)
+* `heroku config:set NODE_ENV=production` - set your NODE_ENV to production
+* `heroku ps:scale web=1` - set your dynos
+* `heroku open` - open your application in the browser for preview
+* `heroku logs` - see logs from your application
+
+
+
 # contributing
 
 If you like what you see, but want to add something more, fork this repo and add
