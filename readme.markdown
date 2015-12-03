@@ -16,7 +16,7 @@ also includes:
 
 [es2015](https://babeljs.io/docs/learn-es2015/)
 
-[view the starter demo](http://substack.neocities.org/react_starter.html)
+[view the starter demo](https://react-express-mongo.herokuapp.com)
 
 
 # quick start

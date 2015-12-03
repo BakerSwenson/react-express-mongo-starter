@@ -49,7 +49,6 @@ io.on('connection', function(socket){
 	io.emit("HELLO", {welcome: "Socket is Sending to Client"});
 });
 
-
 // START THE SERVER
 // =============================================================================
 server.listen(port);
