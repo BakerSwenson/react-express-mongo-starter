@@ -8,8 +8,7 @@
   "scripts": {
     "build": "NODE_ENV=production browserify public/components/**/* | uglifyjs -cm > public/bundle.js",
     "start": "npm run build && nodemon server.js",
-    "watch": "watchify public/components/**/* -o public/bundle.js -dv",
-    "postinstall" : "npm run build"
+    "watch": "watchify public/components/**/* -o public/bundle.js -dv"
   },
   "dependencies": {
     "body-parser": "~1.14.1",
