@@ -10,7 +10,7 @@
     "build-heroku": "browserify -t reactify ./public/components/**/* | uglifyjs -mc > public/bundle.js",
     "start": "nodemon server.js",
     "watch": "watchify public/components/**/* -o public/bundle.js -dv",
-    "postinstall" : "npm run build-heroku"
+    "postinstall" : "npm run build"
   },
   "dependencies": {
     "body-parser": "~1.14.1",
