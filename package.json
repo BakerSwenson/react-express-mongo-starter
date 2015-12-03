@@ -7,9 +7,10 @@
   },
   "scripts": {
     "build": "NODE_ENV=production browserify public/components/**/* | uglifyjs -cm > public/bundle.js",
+    "build-heroku": "browserify -t reactify public/components/**/* | uglifyjs -mc > public/bundle.js",
     "start": "nodemon server.js",
     "watch": "watchify public/components/**/* -o public/bundle.js -dv",
-    "postinstall" : "npm run build"
+    "postinstall" : "npm run build-heroku"
   },
   "dependencies": {
     "body-parser": "~1.14.1",
@@ -34,3 +35,5 @@
     "babelify": "^6.1.2"
   }
 }
+
+
