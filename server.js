@@ -16,7 +16,7 @@ app.use(cors());
 
 //connect to mongo db
 //determine if we're in dev vs. production
-var db = process.env.PROD_MONGODB || "mongodb://localhost:27017/react-starter-visitors"
+var db = process.env.MONGOLAB_URI || "mongodb://localhost:27017/react-starter-visitors"
 mongoose.connect(db);
 
 // this will take the body of your request and parse it to json
