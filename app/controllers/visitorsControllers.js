@@ -1,9 +1,11 @@
 var Visitor = require('../models/Visitor');
+var opbeat  = require("../config/opbeat-config");
 
 //get all visitors in the database
 function all(request, response){
 	Visitor.find(function(error, visitors){
 		if(error){
+			opbeat.captureError(new Error('Could not get all visitors'));
 			console.log("could not get visitors " + error);
 		}
 		response.json(visitors);
@@ -22,8 +24,11 @@ function create(request, response){
 	visitor.ip = request.body.ip;
 	
 	visitor.save(function(err){
-		if(err)
-			response.send("there was an error " + err);
+		if(err){
+			opbeat.captureError(new Error('Error saving visitor'));
+			response.send("there was an error saving visitor" + err);
+		}
+		console.log("opbear ", opbeat);
 
 		//dispatch socket event
 		response.json({message: "visitor has been added"});

@@ -8,7 +8,6 @@ var io 					= require('socket.io').listen(server);
 var ecstatic 			= require('ecstatic');
 var cors				= require('cors');
 
-
 //set up cors for cross origin requests
 app.use(cors());
 

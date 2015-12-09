@@ -39,7 +39,7 @@ $ npm start
 ``` 
 app
   config
-    config.js
+    opbeat-config.js
     routes.js
   controllers
     visitorsControllers.js
