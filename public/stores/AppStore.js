@@ -8,6 +8,8 @@ import AppConstants from '../constants/AppConstants'
 
 import $ from 'jquery'
 
+import Chance from 'chance'
+
 const API_URL = '/api/visitors';
 
 //AppDispatcher will tell the store what to call based on what was dispatched
@@ -35,6 +37,8 @@ let _visitors = {
 	editingVisitor: null
 };
 
+let chance = new Chance();
+
 let AppStore = assign({}, EventEmitter.prototype, {
 	
 	getState() {
@@ -57,7 +61,7 @@ let AppStore = assign({}, EventEmitter.prototype, {
 	addItem(item){
 
 		//make the ajax request and update Mongo (or any other database)
-		$.ajax({ type: 'POST', url: API_URL, data: { name: 'Will', email: 'info@test.com'} })
+		$.ajax({ type: 'POST', url: API_URL, data: { name: chance.first(), email: chance.email()} })
 			.done((data) => {
 				_visitors.message = data.message;
 				//emitChange to notify the view so that the view can make the updates

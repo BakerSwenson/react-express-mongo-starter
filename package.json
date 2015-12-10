@@ -1,4 +1,4 @@
-  {
+{
   "name": "react-express-mongo-starter",
   "browserify": {
     "transform": [
@@ -15,6 +15,7 @@
     "babelify": "^6.1.2",
     "body-parser": "~1.14.1",
     "browserify": "^10.2.6",
+    "chance": "^0.8.0",
     "cors": "^2.7.1",
     "dotenv": "^1.2.0",
     "ecstatic": "~0.8.0",
