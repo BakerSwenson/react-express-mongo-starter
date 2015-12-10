@@ -1,10 +1,12 @@
 var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
+//visitors schema, list all keys that will be stored in the collection (DB)
 var VisitorSchema   = new Schema({
     name:String,
 	email:String,
-	ip:String
+	ip_address:Object,
+	create_date:Date
 });
 
 //pre save the date for each entry
@@ -13,6 +15,4 @@ VisitorSchema.pre('save', function(next){
   next();
 });
 
-
-//added ip for possible banning/
 module.exports = mongoose.model('Visitor', VisitorSchema);

@@ -16,15 +16,16 @@ also includes:
 
 [es2015](https://babeljs.io/docs/learn-es2015/)
 
+[flux](https://facebook.github.io/react/docs/flux-overview.html)
+
 [view the starter demo](https://react-express-mongo.herokuapp.com)
 
 
 # quick start
 
 ```
-$ npm install -g nodemon
 $ npm install
-$ npm run watch &
+$ npm run watch
 $ npm start
 ```
 
@@ -46,12 +47,26 @@ app
   models
     Visitor.js
 public
+  actions
+    AppActions.js
   components
     parts
       app.js
-  Counter.js
-  bundle.js
-  index.html
+      Visitor.js
+    About.js
+    Contact.js
+    Counter.js
+    Error.js
+    Index.js
+    Visitors.js
+  constants
+    AppConstants.js
+  dispatcher
+    AppDispatcher.js
+  stores
+    AppStore.js
+bundle.js
+index.html
 server.js
     
 ```
