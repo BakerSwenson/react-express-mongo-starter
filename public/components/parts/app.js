@@ -12,6 +12,8 @@ import About from '../../components/About'
 
 import Contact from '../../components/Contact'
 
+import Visitors from '../../components/Visitors'
+
 import Error from '../../components/Error'
 
 class App extends React.Component{
@@ -34,7 +36,8 @@ class App extends React.Component{
             <Link to={'/'}>Home</Link> | 
             <Link to={'about'}>About</Link> | 
             <Link to={'contact'}>Contact</Link> | 
-            <Link to={'counter'}>Counter</Link>
+            <Link to={'counter'}>Counter</Link> |
+            <Link to={'visitors'}>Visitors</Link>
              { this.props.children }
         </div>
     )
@@ -48,6 +51,7 @@ React.render((
         <Route path="about" component={ About }/>
         <Route path="contact" component={ Contact }/>
         <Route path="counter" component={ Counter }/>
+        <Route path="visitors" component={ Visitors }/>
         <Route path="*" component={ Error }/>
       </Route>
     </Router>
