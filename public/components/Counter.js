@@ -50,7 +50,7 @@ class Counter extends React.Component{
     render() {
         return(
             <div>
-              <h1>clicked {this.state.number} times!</h1>
+              <h1>added {this.state.number} visitors!</h1>
               <button onClick={this.handleClick}>click me!</button>
               <h3>{ this.state.message }</h3>
             </div>
