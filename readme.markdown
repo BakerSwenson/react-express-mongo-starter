@@ -110,6 +110,10 @@ what's happening up there ^?
 
 
 
+# what's coming next?
+- UPDATE and DELETE functionality from view
+
+
 # contributing
 
 If you like what you see, but want to add something more, fork this repo and add
