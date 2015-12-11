@@ -57,9 +57,19 @@ class Visitors extends React.Component{
 	    return (
 	        <div>
 	            Current visitors: { (Object.keys(this.state.visitors).length) ?  Object.keys(this.state.visitors).length : "0" }
-	            <ul>
-	            	{ this.renderVisitors() }
-	            </ul>
+	            <table class="u-full-width">
+		            <thead>
+					    <tr>
+					      <th>Name</th>
+					      <th>Email</th>
+					      <th>&nbsp;</th>
+					      <th>&nbsp;</th>
+					    </tr>
+					</thead>
+					<tbody>
+						{ this.renderVisitors() }
+					</tbody>
+	            </table>
 	        </div>
 	    )
   }

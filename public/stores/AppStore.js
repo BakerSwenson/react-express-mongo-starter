@@ -12,6 +12,8 @@ import Chance from 'chance'
 
 const API_URL = '/api/visitors';
 
+const API_SINGLE_URL = '/api/visitor';
+
 //AppDispatcher will tell the store what to call based on what was dispatched
 AppDispatcher.register(function(payload){
   
@@ -23,6 +25,10 @@ AppDispatcher.register(function(payload){
 
 	case AppConstants.GET_VISITORS:
 	  	AppStore.getVisitors(payload.action.item)
+	  	break;
+
+	case AppConstants.DELETE_VISITOR:
+	  	AppStore.removeVisitor(payload.action.item)
 	  	break;
   }
 
@@ -73,7 +79,7 @@ let AppStore = assign({}, EventEmitter.prototype, {
 				console.log("fail", jqXhr);
 			})
 
-			.always(() => {
+			.always((jqXhr) => {
 				//this will always be ran if there is an error or not
 				console.log("always", jqXhr);
 			});
@@ -93,6 +99,26 @@ let AppStore = assign({}, EventEmitter.prototype, {
 			.always((jqXhr) => {
 				console.log("always", jqXhr);
 			})
+	},
+
+	removeVisitor(item){
+		//make the ajax request and update Mongo (or any other database)
+		$.ajax({ type: 'DELETE', url: API_SINGLE_URL + "/" + item, dataType:'html' })
+			.done((data) => {
+				AppStore.getVisitors(null);
+				_visitors.message = data.message;
+				AppStore.emitChange(AppConstants.CHANGE_EVENT);
+			})
+
+			.fail((jqXhr) => {
+				//error here
+				console.log("fail", jqXhr);
+			})
+
+			.always((jqXhr) => {
+				//this will always be ran if there is an error or not
+				console.log("always", jqXhr);
+			});
 	}
 
 });
