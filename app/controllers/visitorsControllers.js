@@ -55,7 +55,14 @@ function update(request, response){
 
 //remove a single visitor
 function remove(request, response){
-
+	Visitor.remove({_id: request.params.visitor_id}, function(error){
+		if(error){
+			console.log("could not remove the item");
+		}
+		response.json({message: "Article successfully deleted"})
+	})
+	console.log("skipped debugger");
+	// var id = 
 }
 
 //export all CRUD modules
