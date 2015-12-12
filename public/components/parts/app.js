@@ -33,11 +33,15 @@ class App extends React.Component{
   render() {
     return (
         <div>
-            <Link to={'/'}>Home</Link> | 
-            <Link to={'about'}>About</Link> | 
-            <Link to={'contact'}>Contact</Link> | 
-            <Link to={'counter'}>Counter</Link> |
-            <Link to={'visitors'}>Visitors</Link>
+          <nav className="navbar">
+              <ul className="navbar-list">
+                <li className="navbar-item"><Link to={'/'}>HOME</Link></li>
+                <li className="navbar-item"><Link to={'about'}>ABOUT</Link></li>
+                <li className="navbar-item"><Link to={'contact'}>CONTACT</Link></li>
+                <li className="navbar-item"><Link to={'counter'}>COUNTER</Link></li>
+                <li className="navbar-item"><Link to={'visitors'}>VISITORS</Link></li>
+              </ul>
+          </nav>
              { this.props.children }
         </div>
     )

@@ -18,6 +18,8 @@ also includes:
 
 [flux](https://facebook.github.io/react/docs/flux-overview.html)
 
+[skeleton](http://getskeleton.com/)
+
 [view the starter demo](https://react-express-mongo.herokuapp.com)
 
 
@@ -61,6 +63,10 @@ public
     Visitors.js
   constants
     AppConstants.js
+  css
+    normalize.css
+    skeleton.css
+    style.css
   dispatcher
     AppDispatcher.js
   stores
@@ -76,12 +82,14 @@ added api routing functionality to handle POST and GET requests. UPDATE and DELE
 # socket.io
 using socket.io to emits events to/from server to client.
 
+# skeleton
+a lightweight css framework for starter or smaller projects.  If you'd like to remove this, just remove the css folders and all of the styles with the _`className`_ reference 
+
 # es2015
 newest version of the ecmascript standard.
 
 # react-router
 routing functionality all set to go
-
 
 # deploy to heroku
 make sure you have the [heroku toolbelt](https://toolbelt.heroku.com/) 

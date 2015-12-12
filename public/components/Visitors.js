@@ -56,6 +56,7 @@ class Visitors extends React.Component{
     render() {
 	    return (
 	        <div>
+	        <br />
 	            Current visitors: { (Object.keys(this.state.visitors).length) ?  Object.keys(this.state.visitors).length : "0" }
 	            <table class="u-full-width">
 		            <thead>
