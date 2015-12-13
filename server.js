@@ -1,3 +1,5 @@
+var opbeat  = require("./app/config/opbeat-config");
+
 // call the packages we need
 var express    			= require('express');
 var app        			= express();

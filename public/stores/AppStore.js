@@ -30,6 +30,10 @@ AppDispatcher.register(function(payload){
 	case AppConstants.DELETE_VISITOR:
 	  	AppStore.removeVisitor(payload.action.item)
 	  	break;
+
+	case AppConstants.UPDATE_VISITOR:
+	  	AppStore.updateVisitor(payload.action.item)
+	  	break;
   }
 
   return true;
@@ -39,8 +43,7 @@ AppDispatcher.register(function(payload){
 //refresh state of visitors
 let _visitors = {
 	visitors: [],
-	message:"",
-	editingVisitor: null
+	message:""
 };
 
 let chance = new Chance();
@@ -76,12 +79,12 @@ let AppStore = assign({}, EventEmitter.prototype, {
 
 			.fail((jqXhr) => {
 				//error here
-				console.log("fail", jqXhr);
+				// console.log("fail", jqXhr);
 			})
 
 			.always((jqXhr) => {
 				//this will always be ran if there is an error or not
-				console.log("always", jqXhr);
+				console.log("visitor added", jqXhr);
 			});
 	},
 
@@ -93,17 +96,17 @@ let AppStore = assign({}, EventEmitter.prototype, {
 			})
 
 			.fail((jqXhr) => {
-				console.log("fail", jqXhr);
+				// console.log("fail", jqXhr);
 			})
 
 			.always((jqXhr) => {
-				console.log("always", jqXhr);
+				// console.log("always", jqXhr);
 			})
 	},
 
 	removeVisitor(item){
 		//make the ajax request and update Mongo (or any other database)
-		$.ajax({ type: 'DELETE', url: API_SINGLE_URL + "/" + item, dataType:'html' })
+		$.ajax({ type: 'DELETE', url: API_SINGLE_URL + "/" + item, dataType:'json' })
 			.done((data) => {
 				AppStore.getVisitors(null);
 				_visitors.message = data.message;
@@ -112,12 +115,32 @@ let AppStore = assign({}, EventEmitter.prototype, {
 
 			.fail((jqXhr) => {
 				//error here
-				console.log("fail", jqXhr);
+				// console.log("fail", jqXhr);
 			})
 
 			.always((jqXhr) => {
 				//this will always be ran if there is an error or not
-				console.log("always", jqXhr);
+				console.log("visitor deleted", jqXhr);
+			});
+	},
+
+	updateVisitor(item){
+		//make the ajax request and update Mongo (or any other database)
+		$.ajax({ type: 'PATCH', url: API_SINGLE_URL + "/" + item.id, data:item })
+			.done((data) => {
+				_visitors.message = data.message;
+				AppStore.getVisitors(null);
+				// AppStore.emitChange(AppConstants.CHANGE_EVENT);
+			})
+
+			.fail((jqXhr) => {
+				//error here
+				// console.log("fail", jqXhr);
+			})
+
+			.always((jqXhr) => {
+				//this will always be ran if there is an error or not
+				console.log("visitor edited", jqXhr);
 			});
 	}
 

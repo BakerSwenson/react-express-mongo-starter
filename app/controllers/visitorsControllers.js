@@ -51,18 +51,35 @@ function show(request, response){
 //update a single visitor
 function update(request, response){
 
+	var id = request.params.visitor_id;
+	var data = request.body;
+
+	Visitor.findById(id, function(error, visitor){
+
+		if(error) {
+			console.log("could not update visitor " + error);
+		}
+		Object.keys(data).forEach(function(key){
+			visitor.set(key, data[key]);
+		})
+
+		visitor.save(function(error){
+			if(error){
+				console.log("could not patch: " + error);
+			}
+			response.json({message: 'visitor was successfully updated '})
+		})
+	});
 }
 
 //remove a single visitor
 function remove(request, response){
 	Visitor.remove({_id: request.params.visitor_id}, function(error){
 		if(error){
-			console.log("could not remove the item");
+			console.log("could not remove the visitor");
 		}
-		response.json({message: "Article successfully deleted"})
+		response.json({message: "visitor successfully deleted"})
 	})
-	console.log("skipped debugger");
-	// var id = 
 }
 
 //export all CRUD modules

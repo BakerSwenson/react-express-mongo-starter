@@ -12,6 +12,7 @@ class Visitor extends React.Component {
 	constructor(){
 		super();
         this.removeVisitor = this.removeVisitor.bind(this);
+        this.editVisitor = this.editVisitor.bind(this);
 	}
 
 	propTypes: {
@@ -23,6 +24,7 @@ class Visitor extends React.Component {
 	}
 
 	componentWillUnmount(){
+	
 	}
 
 	removeVisitor(event){
@@ -32,17 +34,18 @@ class Visitor extends React.Component {
 
 	editVisitor(event){
 		event.preventDefault();
-		//TODO NEXT
+		// this is going to make the call to set up the Modal
+		this.props.updateVisitor(this.props.visitor);
 	}
 
 	render(){
 		return(
-			<tr>
-				<td>{ this.props.visitor.name }</td>
-				<td>{ this.props.visitor.email }</td>
-				<td><a href="#" onClick={ this.editVisitor }>Edit</a></td>
-				<td><a href="#" onClick={ this.removeVisitor }>Delete</a></td>
-			</tr>
+				<tr>
+					<td>{ this.props.visitor.name }</td>
+					<td>{ this.props.visitor.email }</td>
+					<td><a href="#" onClick={ this.editVisitor }>Edit</a></td>
+					<td><a href="#" onClick={ this.removeVisitor }>Delete</a></td>
+				</tr>
 		);
 	}
 

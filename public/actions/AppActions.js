@@ -24,6 +24,13 @@ let AppActions = {
             actionType: AppConstants.DELETE_VISITOR,
             item: visitor
         });
+    },
+
+    updateVisitor(visitor){
+    	AppDispatcher.handleViewAction({
+            actionType: AppConstants.UPDATE_VISITOR,
+            item: visitor
+        });
     }
 };
 
