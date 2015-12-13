@@ -119,7 +119,7 @@ what's happening up there ^?
 
 
 # what's coming next?
-- UPDATE and DELETE functionality from view
+- contact form with submission to mongodb
 
 
 # contributing
