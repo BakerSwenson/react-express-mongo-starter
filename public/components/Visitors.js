@@ -77,13 +77,14 @@ class Visitors extends React.Component{
 	}
 
 	openModal() {
-        
+        //sets the modal window visble
         this.setState({
             visible : true
         });
     }
 
     closeModal() {
+    	//closes modal window and removes some settings
         this.setState({
             visible : false,
             singleVisitor:{},
@@ -93,27 +94,31 @@ class Visitors extends React.Component{
     }
 
     updateModal() {
+    	//checks to see if the inputs fields are empty
     	if(this.refs.visitorName.getDOMNode().value == "" || this.refs.visitorEmail.getDOMNode().value == ""){
     		this.setState({emptyFieldMessage: "Fields cannot be blank"});
     		return;
     	}
 
+    	//updates the object that is sent to the AppStore.js
     	let updateData = {
     		id: this.state.singleVisitor._id,
     		name: this.refs.visitorName.getDOMNode().value,
     		email: this.refs.visitorEmail.getDOMNode().value
     	}
-    	
+    	//calls the update action
         AppActions.updateVisitor(updateData);
     }
 
-    clearField(event){
+    clearPlaceholder(event){
+    	// clears form placeholder on click or tab
     	if(event.type == "click" || (event.type == "keyup" && event.which == 9)){
 			event.currentTarget.placeholder = "";
     	}
     }
 
     clearFormFields(){
+    	// clears both input fields
 		this.refs.visitorName.getDOMNode().value = "";
 		this.refs.visitorEmail.getDOMNode().value = "";
     }
@@ -154,8 +159,8 @@ class Visitors extends React.Component{
                     height="300"
                     effect="fadeInUp">
                     <div className="edit-form">
-                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearField.bind(this)} onKeyUp={this.clearField.bind(this)} placeholder={ this.state.singleVisitor.name } required />
-                        <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearField.bind(this)} onKeyUp={this.clearField.bind(this)} placeholder={ this.state.singleVisitor.email } required/>
+                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.name } required />
+                        <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.email } required/>
                         <input type="button" value="Save" href="javascript:void(0);" className="button-primary save-btn" onClick={this.updateModal.bind(this)} />
                         <input type="button" value="Cancel" href="javascript:void(0);" onClick={this.closeModal.bind(this)} />
                         <h6 className="empty-field">{this.state.emptyFieldMessage}</h6>
