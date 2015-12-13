@@ -34,6 +34,10 @@ AppDispatcher.register(function(payload){
 	case AppConstants.UPDATE_VISITOR:
 	  	AppStore.updateVisitor(payload.action.item)
 	  	break;
+
+	  case AppConstants.CLEAR_MESSAGES:
+	  	AppStore.clearMessages(payload.action.item)
+	  	break;
   }
 
   return true;
@@ -43,7 +47,8 @@ AppDispatcher.register(function(payload){
 //refresh state of visitors
 let _visitors = {
 	visitors: [],
-	message:""
+	message:"",
+	singleVisitor:{}
 };
 
 let chance = new Chance();
@@ -130,7 +135,7 @@ let AppStore = assign({}, EventEmitter.prototype, {
 			.done((data) => {
 				_visitors.message = data.message;
 				AppStore.getVisitors(null);
-				// AppStore.emitChange(AppConstants.CHANGE_EVENT);
+				AppStore.emitChange(AppConstants.CHANGE_EVENT);
 			})
 
 			.fail((jqXhr) => {
@@ -142,6 +147,12 @@ let AppStore = assign({}, EventEmitter.prototype, {
 				//this will always be ran if there is an error or not
 				console.log("visitor edited", jqXhr);
 			});
+	},
+
+	clearMessages(message){
+		_visitors.message = '';
+		AppStore.emitChange(AppConstants.CHANGE_EVENT);
+
 	}
 
 });

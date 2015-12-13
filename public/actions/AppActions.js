@@ -31,6 +31,13 @@ let AppActions = {
             actionType: AppConstants.UPDATE_VISITOR,
             item: visitor
         });
+    },
+
+    clearMessages(message){
+    	AppDispatcher.handleViewAction({
+            actionType: AppConstants.CLEAR_MESSAGES,
+            item: message
+        });
     }
 };
 

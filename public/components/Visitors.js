@@ -19,12 +19,14 @@ class Visitors extends React.Component{
 		this.closeModal = this.closeModal.bind(this);
 		this.updateModal = this.updateModal.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
+		this.clearFormFields = this.clearFormFields.bind(this);
 		
 		this.state = {
 			visitors: {},
 			visible: false,
 			singleVisitor: {},
-			message: ''
+			message: '',
+			emptyFieldMessage:''
 		}
 		this.getVisitors();
 	}
@@ -34,6 +36,8 @@ class Visitors extends React.Component{
 	}
 
 	componentWillUnmount(){
+		//do stuff before the component is removed
+		AppActions.clearMessages();
 		AppStore.removeChangeListener(this._onChange);
 	}
 
@@ -73,6 +77,7 @@ class Visitors extends React.Component{
 	}
 
 	openModal() {
+        
         this.setState({
             visible : true
         });
@@ -80,11 +85,19 @@ class Visitors extends React.Component{
 
     closeModal() {
         this.setState({
-            visible : false
+            visible : false,
+            singleVisitor:{},
+            emptyFieldMessage:''
         });
+        this.clearFormFields();
     }
 
     updateModal() {
+    	if(this.refs.visitorName.getDOMNode().value == "" || this.refs.visitorEmail.getDOMNode().value == ""){
+    		this.setState({emptyFieldMessage: "Fields cannot be blank"});
+    		return;
+    	}
+
     	let updateData = {
     		id: this.state.singleVisitor._id,
     		name: this.refs.visitorName.getDOMNode().value,
@@ -94,11 +107,26 @@ class Visitors extends React.Component{
         AppActions.updateVisitor(updateData);
     }
 
+    clearField(event){
+    	if(event.type == "click" || (event.type == "keyup" && event.which == 9)){
+			event.currentTarget.placeholder = "";
+    	}
+    }
+
+    clearFormFields(){
+		this.refs.visitorName.getDOMNode().value = "";
+		this.refs.visitorEmail.getDOMNode().value = "";
+    }
+
 	_onChange(){
 		//once the onChange has fired from the store, we can set the new state
 		this.state.visible ? this.closeModal() : null;
-		this.setState({visitors: AppStore.getState().visitors})	
-		this.setState({message: AppStore.getState().message})	
+		this.setState({
+			visitors: AppStore.getState().visitors,
+			message: AppStore.getState().message
+		});	
+
+		this.clearFormFields();
 	}
 
     render() {
@@ -126,10 +154,11 @@ class Visitors extends React.Component{
                     height="300"
                     effect="fadeInUp">
                     <div className="edit-form">
-                        <input type="text" className="edit-name" ref="visitorName" placeholder={ this.state.singleVisitor.name } />
-                        <input type="text" className="edit-name" ref="visitorEmail" placeholder={ this.state.singleVisitor.email } />
+                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearField.bind(this)} onKeyUp={this.clearField.bind(this)} placeholder={ this.state.singleVisitor.name } required />
+                        <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearField.bind(this)} onKeyUp={this.clearField.bind(this)} placeholder={ this.state.singleVisitor.email } required/>
                         <input type="button" value="Save" href="javascript:void(0);" className="button-primary save-btn" onClick={this.updateModal.bind(this)} />
                         <input type="button" value="Cancel" href="javascript:void(0);" onClick={this.closeModal.bind(this)} />
+                        <h6 className="empty-field">{this.state.emptyFieldMessage}</h6>
                     </div>
                 </Modal>
 	        </div>
