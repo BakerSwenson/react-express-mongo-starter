@@ -77,7 +77,8 @@ let AppStore = assign({}, EventEmitter.prototype, {
 		//make the ajax request and update Mongo (or any other database)
 		$.ajax({ type: 'POST', url: API_URL, data: { name: chance.first(), email: chance.email()} })
 			.done((data) => {
-				_visitors.message = data.message;
+				//add line below if you'd like to show the "visitor has been added" message
+				// _visitors.message = data.message;
 				//emitChange to notify the view so that the view can make the updates
 				AppStore.emitChange(AppConstants.CHANGE_EVENT);
 			})
