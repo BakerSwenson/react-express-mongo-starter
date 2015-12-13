@@ -51,7 +51,7 @@ class Counter extends React.Component{
         return(
             <div>
               <h3>added {this.state.number} visitors!</h3>
-              <button className="button-primary" onClick={ this.handleClick }>click me!</button>
+              <button className="button-primary" onClick={ this.handleClick }>add visitor!</button>
               <p>{ this.state.message }</p>
             </div>
         )
