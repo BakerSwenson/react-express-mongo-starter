@@ -138,7 +138,7 @@ class Visitors extends React.Component{
 	    return (
 	        <div>
 	        	<br />
-	            Current visitors: { (Object.keys(this.state.visitors).length) ?  Object.keys(this.state.visitors).length : "0" }
+	            Total visitors: { (Object.keys(this.state.visitors).length) ?  Object.keys(this.state.visitors).length : "0" }
 	            <h6 className="updated">{ this.state.message }</h6>
 	            <table class="u-full-width">
 		            <thead>
