@@ -38,8 +38,8 @@ class Counter extends React.Component{
     handleClick() {
         //tell the store an item has just been added
         //this AppActions.addItem is completely unnecessary at this point but it demonstrates the flux unidirectional flow
-        AppActions.addItem("Adding Increment");
         this.setState({ number: this.state.number + 1 })
+        AppActions.addItem(this.state.number);
     }
 
     _onChange(){

@@ -48,7 +48,8 @@ AppDispatcher.register(function(payload){
 let _visitors = {
 	visitors: [],
 	message:"",
-	singleVisitor:{}
+	singleVisitor:{},
+	currentVisitorAdded:0
 };
 
 let chance = new Chance();
@@ -73,13 +74,13 @@ let AppStore = assign({}, EventEmitter.prototype, {
 	},
 
 	addItem(item){
-
 		//make the ajax request and update Mongo (or any other database)
 		$.ajax({ type: 'POST', url: API_URL, data: { name: chance.first(), email: chance.email()} })
 			.done((data) => {
 				//add line below if you'd like to show the "visitor has been added" message
 				// _visitors.message = data.message;
 				//emitChange to notify the view so that the view can make the updates
+				_visitors.currentVisitorAdded = item + 1;
 				AppStore.emitChange(AppConstants.CHANGE_EVENT);
 			})
 
@@ -98,6 +99,7 @@ let AppStore = assign({}, EventEmitter.prototype, {
 		$.ajax({type: 'GET', url: API_URL})
 			.done((data) => {
 				_visitors.visitors = data;
+				_visitors.currentVisitorAdded = null;
 				AppStore.emitChange(AppConstants.CHANGE_EVENT);
 			})
 

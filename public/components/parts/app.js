@@ -16,18 +16,42 @@ import Visitors from '../../components/Visitors'
 
 import Error from '../../components/Error'
 
+import AppActions from '../../actions/AppActions'
+
+import AppStore from '../../stores/AppStore'
+
 class App extends React.Component{
   
   constructor(){
     super();
+
+    this._onChange = this._onChange.bind(this);
+
+    this.state = {
+      currentVisitorAdded: null
+    }
   }
   
   componentWillMount(){
     //do stuff before the component mounts
   }
 
+  componentWillUnount(){
+      //do stuff before the component mounts
+      //remove listeners to the store
+      AppStore.removeChangeListener(this._onChange);
+  }
+
   componentDidMount(){
     //do stuff after the component mounts
+    //add listeners to the store
+    AppStore.addChangeListener(this._onChange);
+  }
+
+  _onChange(){
+    this.setState({
+      currentVisitorAdded: AppStore.getState().currentVisitorAdded
+    }); 
   }
 
   render() {
@@ -39,7 +63,16 @@ class App extends React.Component{
                 <li className="navbar-item"><Link to={'about'}>ABOUT</Link></li>
                 <li className="navbar-item"><Link to={'contact'}>CONTACT</Link></li>
                 <li className="navbar-item"><Link to={'counter'}>COUNTER</Link></li>
-                <li className="navbar-item"><Link to={'visitors'}>VISITORS</Link></li>
+                <li className="navbar-item">
+                <Link to={'visitors'}>VISITORS 
+                { this.state.currentVisitorAdded ? (
+                <span className="fa-stack notification-container">
+                  <i className="fa fa-circle fa-stack notification"></i>
+                  <strong className="fa-stack-1x notification-num">{this.state.currentVisitorAdded}</strong>
+                </span>
+                ) : ''}
+                  
+                </Link></li>
               </ul>
           </nav>
              { this.props.children }

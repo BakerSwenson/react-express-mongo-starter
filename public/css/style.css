@@ -13,6 +13,20 @@ nav {
 	color: #ff0000 !important;
 }
 
+.notification {
+	color: #ff0000 !important;
+}
+
+.notification-container {
+	bottom: 8px !important;
+}
+
+.notification-num {
+	color: #fff !important;
+	font-size: 9px;
+	left: -9px;
+}
+
 .navbar-list {
 	list-style: none;
 	margin: 0 auto;

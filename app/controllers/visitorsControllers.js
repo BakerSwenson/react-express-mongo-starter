@@ -4,12 +4,13 @@ var opbeat  = require("../config/opbeat-config");
 //get all visitors in the database
 function all(request, response){
 	Visitor.find(function(error, visitors){
+		// db.collection.find().sort( { age: -1 } )
 		if(error){
 			opbeat.captureError(new Error('Could not get all visitors'));
 			console.log("could not get visitors " + error);
 		}
 		response.json(visitors);
-	});
+	}).sort({create_date: -1});
 }
 
 //add a visitor to the database
