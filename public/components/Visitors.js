@@ -159,8 +159,8 @@ class Visitors extends React.Component{
                     height="300"
                     effect="fadeInUp">
                     <div className="edit-form">
-                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.name } required />
-                        <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.email } required/>
+                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.name }  />
+                        <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.email } />
                         <input type="button" value="Save" href="javascript:void(0);" className="button-primary save-btn" onClick={this.updateModal.bind(this)} />
                         <input type="button" value="Cancel" href="javascript:void(0);" onClick={this.closeModal.bind(this)} />
                         <h6 className="empty-field">{this.state.emptyFieldMessage}</h6>

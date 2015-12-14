@@ -38,6 +38,13 @@ let AppActions = {
             actionType: AppConstants.CLEAR_MESSAGES,
             item: message
         });
+    },
+
+    submitContact(formData){
+    	AppDispatcher.handleViewAction({
+    		actionType: AppConstants.SUBMIT_CONTACT,
+    		item: formData
+    	});
     }
 };
 

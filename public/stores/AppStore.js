@@ -12,6 +12,8 @@ import Chance from 'chance'
 
 const API_URL = '/api/visitors';
 
+const CONTACT_API_URL = '/api/contact';
+
 const API_SINGLE_URL = '/api/visitor';
 
 //AppDispatcher will tell the store what to call based on what was dispatched
@@ -35,9 +37,13 @@ AppDispatcher.register(function(payload){
 	  	AppStore.updateVisitor(payload.action.item)
 	  	break;
 
-	  case AppConstants.CLEAR_MESSAGES:
-	  	AppStore.clearMessages(payload.action.item)
-	  	break;
+	case AppConstants.CLEAR_MESSAGES:
+		AppStore.clearMessages(payload.action.item)
+		break;
+	
+	case AppConstants.SUBMIT_CONTACT:
+		AppStore.submitContact(payload.action.item)
+		break;
   }
 
   return true;
@@ -156,7 +162,28 @@ let AppStore = assign({}, EventEmitter.prototype, {
 		_visitors.message = '';
 		AppStore.emitChange(AppConstants.CHANGE_EVENT);
 
-	}
+	},
+
+	submitContact(formData){
+		//make the ajax request and update Mongo (or any other database)
+		$.ajax({ type: 'POST', url: CONTACT_API_URL, data: { email: formData.email, reason: formData.reason, message: formData.message, sendCopy: formData.sendCopy } })
+			.done((data) => {
+				//add line below if you'd like to show the "visitor has been added" message
+				_visitors.message = data.message;
+				//emitChange to notify the view so that the view can make the updates
+				AppStore.emitChange(AppConstants.CHANGE_EVENT);
+			})
+
+			.fail((jqXhr) => {
+				//error here
+				// console.log("fail", jqXhr);
+			})
+
+			.always((jqXhr) => {
+				//this will always be ran if there is an error or not
+				console.log("visitor added", jqXhr);
+			});
+	},
 
 });
 
