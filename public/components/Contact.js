@@ -17,7 +17,9 @@ class Contact extends React.Component{
 		this.handleSubmit = this.handleSubmit.bind(this);
 
 		this.state = {
-			message:""
+			message:"",
+			emptyFieldMessage:""
+
 		};
 	}
 
@@ -36,6 +38,12 @@ class Contact extends React.Component{
 
 	handleSubmit(event){
 		//check to see if all fields are filled before going through
+		if(this.refs.email.getDOMNode().value == ""){
+    		this.setState({emptyFieldMessage: "Email cannot be blank"});
+    		return;
+    	}
+    	this.setState({emptyFieldMessage: ""});
+
 		let contactData = {
 			email: this.refs.email.getDOMNode().value,
 			reason:this.refs.reason.getDOMNode().value,
@@ -45,8 +53,10 @@ class Contact extends React.Component{
 		AppActions.submitContact(contactData);
 	}
 
-	clearPlaceholder(){
-
+	clearPlaceholder(event){
+		if(event.type == "click" || (event.type == "keyup" && event.which == 9)){
+			event.currentTarget.placeholder = "";
+    	}
 	}
 
 	_onChange(){
@@ -62,7 +72,7 @@ class Contact extends React.Component{
 				  <div className="row">
 				    <div className="six columns">
 				      <label for="exampleEmailInput">Your email</label>
-				      <input className="u-full-width" type="email" ref="email" value={ chance.email() } placeholder={ chance.email() } id="exampleEmailInput" />
+				      <input className="u-full-width" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} type="email" ref="email" placeholder={ chance.email() } id="exampleEmailInput" />
 				    </div>
 				    <div className="six columns">
 				      <label for="exampleRecipientInput">Reason for contacting</label>
@@ -74,7 +84,7 @@ class Contact extends React.Component{
 				    </div>
 				  </div>
 				  <label for="exampleMessage">Message</label>
-				  <textarea className="u-full-width" ref="message" value={ chance.paragraph({sentences: 1})  } placeholder="Hi, I had some questions regarding..." id="exampleMessage"></textarea>
+				  <textarea className="u-full-width" ref="message" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder="Hi, I had some questions regarding..." id="exampleMessage"></textarea>
 				  <label className="example-send-yourself-copy">
 				    <input type="checkbox" ref="sendCopy" />
 				    <span className="label-body">Send a copy to yourself</span>
@@ -82,6 +92,7 @@ class Contact extends React.Component{
 				  <input className="button-primary" type="submit" onClick={ this.handleSubmit } value="Submit" />
 				</form>
 				{ this.state.message ? (<h6 className="notification">{ this.state.message }</h6>) : ''}
+				{ this.state.emptyFieldMessage ? (<h6 className="notification">{ this.state.emptyFieldMessage }</h6>) : ''}
 	        </div>
 	    )
   }
