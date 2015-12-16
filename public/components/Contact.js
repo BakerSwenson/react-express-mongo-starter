@@ -57,6 +57,7 @@ class Contact extends React.Component{
 		if(event.type == "click" || (event.type == "keyup" && event.which == 9)){
 			event.currentTarget.placeholder = "";
     	}
+    	debugger;
 	}
 
 	_onChange(){
