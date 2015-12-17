@@ -8,6 +8,8 @@ import AppStore from '../stores/AppStore'
 
 import Chance from 'chance'
 
+import HeaderSmall from './parts/HeaderSmall'
+
 class Contact extends React.Component{
 
 	constructor(){
@@ -57,7 +59,6 @@ class Contact extends React.Component{
 		if(event.type == "click" || (event.type == "keyup" && event.which == 9)){
 			event.currentTarget.placeholder = "";
     	}
-    	debugger;
 	}
 
 	_onChange(){
@@ -69,6 +70,8 @@ class Contact extends React.Component{
     render() {
 	    return (
 	        <div>
+	        	<br />
+	        	<HeaderSmall />
 	            <form className="contact-form">
 				  <div className="row">
 				    <div className="six columns">

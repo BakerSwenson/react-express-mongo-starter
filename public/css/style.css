@@ -67,3 +67,47 @@ nav {
 	text-align: center;
 	margin-top: 50px;
 }
+
+.main-img {
+	/*background: url('images/hero.jpg') no-repeat center center;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: table;
+	/*margin-left: -108px;*/
+	margin-bottom: 30px;
+	/*width: 100vw !important;*/
+	height: 380px;
+	overflow: hidden;
+}
+
+.sub-img {
+	/*background: url('images/hero.jpg') no-repeat center center;*/
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: table;
+	/*margin-left: -108px;*/
+	margin-bottom: 30px;
+	/*width: 100vw !important;*/
+	height: 90px;
+	overflow: hidden;
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+

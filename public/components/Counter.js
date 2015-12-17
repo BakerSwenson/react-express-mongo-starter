@@ -6,6 +6,8 @@ import AppActions from '../actions/AppActions'
 
 import AppStore from '../stores/AppStore'
 
+import HeaderSmall from './parts/HeaderSmall'
+
 
 class Counter extends React.Component{
 	
@@ -50,9 +52,11 @@ class Counter extends React.Component{
     render() {
         return(
             <div>
-              <h3>added {this.state.number} visitors!</h3>
-              <button className="button-primary" onClick={ this.handleClick }>add visitor!</button>
-              <p>{ this.state.message }</p>
+                <br />
+                <HeaderSmall />
+                <h3>added {this.state.number} visitors!</h3>
+                <button className="button-primary" onClick={ this.handleClick }>add visitor!</button>
+                <p>{ this.state.message }</p>
             </div>
         )
     }

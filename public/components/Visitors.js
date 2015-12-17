@@ -10,6 +10,8 @@ import AppStore from '../stores/AppStore'
 
 import Modal from 'react-awesome-modal'
 
+import HeaderSmall from './parts/HeaderSmall'
+
 class Visitors extends React.Component{
 	
 	constructor(){
@@ -138,6 +140,7 @@ class Visitors extends React.Component{
 	    return (
 	        <div>
 	        	<br />
+	        	<HeaderSmall />
 	            Total visitors: { (Object.keys(this.state.visitors).length) ?  Object.keys(this.state.visitors).length : "0" }
 	            <h6 className="updated">{ this.state.message }</h6>
 	            <table class="u-full-width">
