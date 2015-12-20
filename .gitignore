@@ -2,3 +2,4 @@ _assets/
 node_modules/
 public/bundle.js
 .env
+.idea/*
