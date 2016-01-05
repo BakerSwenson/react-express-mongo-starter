@@ -119,10 +119,7 @@ what's happening up there ^?
 
 
 # what's coming next?
-- ~~contact form with submission to mongodb~~
-- clear contact placeholder text fields on focus
-- add footer component
-- add some images to make things look a little prittier
+- Adding Stylus?
 
 
 
