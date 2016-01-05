@@ -13,7 +13,7 @@ import Modal from 'react-awesome-modal'
 import HeaderSmall from './parts/HeaderSmall'
 
 class Visitors extends React.Component{
-	
+
 	constructor(){
 		super();
 		this._onChange = this._onChange.bind(this);
@@ -22,7 +22,7 @@ class Visitors extends React.Component{
 		this.updateModal = this.updateModal.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.clearFormFields = this.clearFormFields.bind(this);
-		
+
 		this.state = {
 			visitors: {},
 			visible: false,
@@ -162,7 +162,7 @@ class Visitors extends React.Component{
                     height="300"
                     effect="fadeInUp">
                     <div className="edit-form">
-                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.name }  />
+                        <input type="text" className="edit-name" ref="visitorName" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} onBlur={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.name }  />
                         <input type="text" className="edit-name" ref="visitorEmail" onClick={this.clearPlaceholder.bind(this)} onKeyUp={this.clearPlaceholder.bind(this)} placeholder={ this.state.singleVisitor.email } />
                         <input type="button" value="Save" href="javascript:void(0);" className="button-primary save-btn" onClick={this.updateModal.bind(this)} />
                         <input type="button" value="Cancel" href="javascript:void(0);" onClick={this.closeModal.bind(this)} />
