@@ -1,5 +1,8 @@
 # react-express-mongo-starter
 
+#NOTICE ^ This Repo Got Issues:
+After diving more and more into React, I realize there are A LOT of things that I did wrong this time around.  I'm in the process of refactoring this repo.  I'll post a new update once i've done so.
+
 added a few mods to the insanely awesome [react-starter](https://github.com/substack/react-starter) repo.  
 
 bare-bones [react](https://facebook.github.io/react/) starter

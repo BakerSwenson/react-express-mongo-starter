@@ -16,7 +16,7 @@ class Visitor extends React.Component {
 	}
 
 	propTypes: {
-		visitor: React.PropTypes.object.isRequired,
+		visitor: React.PropTypes.object.isRequired
 	}
 
 	componentDidMount(){

@@ -9,7 +9,8 @@
     "build": "NODE_ENV=production browserify ./public/components/**/* | uglifyjs -cm > public/bundle.js",
     "start": "nodemon server.js",
     "watch": "watchify public/components/**/* -o public/bundle.js -dv",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "test": "mocha --reporter doc > report.html"
   },
   "dependencies": {
     "babelify": "^6.1.2",
@@ -40,6 +41,8 @@
   },
   "license": "public domain",
   "devDependencies": {
-    "babelify": "^6.1.2"
+    "babelify": "^6.1.2",
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
   }
 }
